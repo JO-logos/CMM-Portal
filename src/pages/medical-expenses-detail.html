@@ -1,0 +1,82 @@
+        <main class="cmm-main" id="main-content" tabindex="-1">
+          <div class="cmm-page-layout cmm-expenses-page cmm-page--medical-expenses">
+            <header class="cmm-page-title-bar">
+              <div class="cmm-page-header">
+                <h1 class="cmm-page-header__title">Appendectomy (맹장수술)</h1>
+                <p class="cmm-page-header__summary">Review the expense details, files, and communication.</p>
+                <p><span class="cmm-status-text cmm-status-text--informational">To Report</span></p>
+              </div>
+              <div class="cmm-page-actions">
+                <a class="cmm-button" href="medical-expenses.html">Back</a>
+              </div>
+            </header>
+
+            <!-- Future QWeb mapping: cmm_member_portal.medical_expense_detail -->
+            <section class="cmm-data-card cmm-expenses-metadata" aria-label="Expense metadata">
+              <dl class="cmm-expenses-metadata__list">
+                <div class="cmm-expenses-metadata__item">
+                  <dt>Submitted on</dt>
+                  <dd><time datetime="2026-08-04">04/08/2026</time></dd>
+                </div>
+                <div class="cmm-expenses-metadata__item">
+                  <dt>For</dt>
+                  <dd>Jungoh Kim</dd>
+                </div>
+                <div class="cmm-expenses-metadata__item">
+                  <dt>Level</dt>
+                  <dd><span class="cmm-level-badge cmm-level-badge--gold-plus">Gold Plus</span></dd>
+                </div>
+              </dl>
+            </section>
+
+            <article class="cmm-data-card cmm-expenses-detail-card">
+              <section class="cmm-expenses-detail-section" aria-labelledby="expense-summary-title">
+                <h2 class="cmm-section-title" id="expense-summary-title">Expense Summary</h2>
+                <dl class="cmm-expenses-summary">
+                  <div class="cmm-expenses-summary__item">
+                    <dt>Description</dt>
+                    <dd>This expense covers an emergency appendectomy and related hospitalization through May 15, 2026.</dd>
+                  </div>
+                  <div class="cmm-expenses-summary__item">
+                    <dt>Total</dt>
+                    <dd><strong>$15,000.00</strong></dd>
+                  </div>
+                </dl>
+              </section>
+
+              <section class="cmm-expenses-detail-section" aria-labelledby="attachments-title">
+                <h2 class="cmm-section-title" id="attachments-title">Attachments</h2>
+                <ul class="cmm-expenses-attachments">
+                  <li class="cmm-expenses-attachment">
+                    <svg class="cmm-icon" aria-hidden="true"><use href="../assets/icons/cmm-ui-icons.svg#cmm-icon-document"></use></svg>
+                    <span>hospital-bill-itemized.pdf</span>
+                  </li>
+                  <li class="cmm-expenses-attachment">
+                    <svg class="cmm-icon" aria-hidden="true"><use href="../assets/icons/cmm-ui-icons.svg#cmm-icon-document"></use></svg>
+                    <span>discharge-summary.png</span>
+                  </li>
+                </ul>
+              </section>
+            </article>
+
+            <!-- Static prototype only; QOC will connect Odoo messages and posting. -->
+            <section class="cmm-data-card cmm-expenses-communication" aria-labelledby="communication-title">
+              <h2 class="cmm-section-title" id="communication-title">Communication</h2>
+              <article class="cmm-expenses-message">
+                <div class="cmm-expenses-message__icon">
+                  <svg class="cmm-icon" aria-hidden="true"><use href="../assets/icons/cmm-ui-icons.svg#cmm-icon-account"></use></svg>
+                </div>
+                <div>
+                  <h3>Member Support</h3>
+                  <p>We need an itemized hospital statement for this expense.</p>
+                </div>
+              </article>
+              <div class="cmm-expenses-reply">
+                <label for="expense-reply">Reply</label>
+                <textarea id="expense-reply" rows="4" placeholder="Write a reply"></textarea>
+                <p class="cmm-screen-reader-only" id="expense-send-note">Sending is not connected in this static prototype.</p>
+                <button class="cmm-button cmm-button--primary" type="button" aria-describedby="expense-send-note">Send</button>
+              </div>
+            </section>
+          </div>
+        </main>

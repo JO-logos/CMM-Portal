@@ -1,0 +1,116 @@
+        <main class="cmm-main" id="main-content" tabindex="-1">
+          <div class="cmm-page-layout">
+            <header class="cmm-page-title-bar">
+              <div class="cmm-page-header">
+                <h1 class="cmm-page-header__title">My Membership</h1>
+                <p class="cmm-page-header__summary">View and edit family information, add family members.</p>
+              </div>
+              <div class="cmm-page-actions">
+                <a class="cmm-button cmm-button--positive" href="add-family-member.html">
+                  <svg class="cmm-icon" aria-hidden="true"><use href="../assets/icons/cmm-ui-icons.svg#cmm-icon-plus"></use></svg>
+                  <span>Add Family Member</span>
+                </a>
+              </div>
+            </header>
+
+            <section class="cmm-data-section" aria-labelledby="active-members-title">
+              <div class="cmm-section-heading">
+                <h2 class="cmm-dashboard-section__title" id="active-members-title">Active Members</h2>
+              </div>
+              <div class="cmm-data-card">
+                <!-- Demonstration records become a QWeb t-foreach collection in the Odoo implementation. -->
+                <table class="cmm-data-table">
+                  <caption class="cmm-screen-reader-only">Active family members</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">Name</th>
+                      <th scope="col">Position</th>
+                      <th scope="col">Level</th>
+                      <th scope="col">DOB</th>
+                      <th scope="col">Phone</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td data-label="Name"><strong>Kim Cheoljin</strong></td>
+                      <td data-label="Position">Head</td>
+                      <td data-label="Level"><span class="cmm-level-badge cmm-level-badge--gold-plus">Gold Plus</span></td>
+                      <td data-label="DOB"><time datetime="1965-08-31">1965-08-31</time></td>
+                      <td data-label="Phone">(609)751-7595</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <template class="cmm-empty-state-template">
+                  <p class="cmm-empty-state">No active family members were found.</p>
+                </template>
+              </div>
+            </section>
+
+            <section class="cmm-data-section" aria-labelledby="cancelled-members-title">
+              <div class="cmm-section-heading">
+                <h2 class="cmm-dashboard-section__title" id="cancelled-members-title">Cancelled Members</h2>
+              </div>
+              <div class="cmm-data-card">
+                <table class="cmm-data-table">
+                  <caption class="cmm-screen-reader-only">Cancelled family members</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">Name</th>
+                      <th scope="col">Position</th>
+                      <th scope="col">Level</th>
+                      <th scope="col">DOB</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td data-label="Name"><strong>Kim Eungyeong</strong></td>
+                      <td data-label="Position">Spouse</td>
+                      <td data-label="Level"><span class="cmm-level-badge cmm-level-badge--gold-plus">Gold Plus</span></td>
+                      <td data-label="DOB"><time datetime="1968-09-06">1968-09-06</time></td>
+                      <td data-label="Action">
+                        <div class="cmm-record-action">
+                          <span class="cmm-record-status">Eligible for reinstatement</span>
+                          <a class="cmm-button cmm-button--primary" href="reinstate-membership.html">
+                            <svg class="cmm-icon cmm-button__icon" aria-hidden="true"><use href="../assets/icons/cmm-ui-icons.svg#cmm-icon-restore"></use></svg>
+                            <span>Reinstate</span>
+                          </a>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td data-label="Name"><strong>Kim Suchan</strong></td>
+                      <td data-label="Position">Dependent</td>
+                      <td data-label="Level"><span class="cmm-level-badge cmm-level-badge--gold-plus">Gold Plus</span></td>
+                      <td data-label="DOB"><time datetime="1996-01-18">1996-01-18</time></td>
+                      <td data-label="Action">
+                        <p class="cmm-inline-status">
+                          <svg class="cmm-icon cmm-inline-status__icon" aria-hidden="true"><use href="../assets/icons/cmm-ui-icons.svg#cmm-icon-alert-circle"></use></svg>
+                          <span class="cmm-inline-status__text"><span class="cmm-screen-reader-only">Not eligible for the standard reinstatement action. </span>You need to apply as an independent member</span>
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td data-label="Name"><strong>Kim Yechun</strong></td>
+                      <td data-label="Position">Dependent</td>
+                      <td data-label="Level"><span class="cmm-level-badge cmm-level-badge--gold-plus">Gold Plus</span></td>
+                      <td data-label="DOB"><time datetime="2001-01-08">2001-01-08</time></td>
+                      <td data-label="Action">
+                        <div class="cmm-record-action">
+                          <span class="cmm-record-status">Eligible for reinstatement</span>
+                          <a class="cmm-button cmm-button--primary" href="reinstate-membership.html">
+                            <svg class="cmm-icon cmm-button__icon" aria-hidden="true"><use href="../assets/icons/cmm-ui-icons.svg#cmm-icon-restore"></use></svg>
+                            <span>Reinstate</span>
+                          </a>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <template class="cmm-empty-state-template">
+                  <p class="cmm-empty-state">No cancelled members were found.</p>
+                </template>
+              </div>
+            </section>
+          </div>
+        </main>

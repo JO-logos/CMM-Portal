@@ -1,0 +1,29 @@
+        <main class="cmm-main" id="main-content" tabindex="-1">
+          <div class="cmm-page-layout cmm-page--gift-reminder">
+            <header class="cmm-page-title-bar">
+              <div class="cmm-page-header">
+                <h1 class="cmm-page-header__title">Gift Reminder</h1>
+                <p class="cmm-page-header__summary">Review giving reminders and contribution notices associated with your account.</p>
+              </div>
+              <div class="cmm-form-field cmm-gift-reminder-toolbar">
+                <label for="gift-reminder-sort">Sort by</label>
+                <select id="gift-reminder-sort" name="gift_reminder_sort">
+                  <option value="newest" selected>Newest</option>
+                  <option value="oldest">Oldest</option>
+                </select>
+              </div>
+            </header>
+
+            <!-- Future QWeb mapping: cmm_member_portal.gift_reminders -->
+            <section class="cmm-gift-reminder-list" aria-labelledby="gift-reminder-list-title">
+              <h2 class="cmm-screen-reader-only" id="gift-reminder-list-title">Gift reminder notices</h2>
+              <div class="cmm-data-card cmm-empty-state cmm-gift-reminder-empty">
+                <span class="cmm-gift-reminder-empty__icon" aria-hidden="true">
+                  <svg class="cmm-icon"><use href="../assets/icons/cmm-ui-icons.svg#cmm-icon-giving"></use></svg>
+                </span>
+                <strong>There are currently no gift reminders for your account.</strong>
+                <p>New reminders and giving notices will appear here when available.</p>
+              </div>
+            </section>
+          </div>
+        </main>

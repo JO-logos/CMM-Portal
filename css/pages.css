@@ -1,0 +1,1024 @@
+/* ==========================================================================
+   PAGE-SPECIFIC STYLES
+
+   1. Dashboard
+   2. My Membership
+   3. Medical Expenses
+      3.1 Shared Medical Expenses layout
+      3.2 Expense list
+      3.3 Add Expense form
+      3.4 Expense detail
+      3.5 Attachments and communication
+      3.6 Medical Expenses responsive rules
+   4. Change Payment Method
+      4.1 Page layout and section spacing
+      4.2 Bank Information emphasis
+      4.3 Alternate billing address
+      4.4 Referral and notification
+      4.5 Autopayment agreement and page actions
+      4.6 Change Payment Method responsive rules
+   5. Document Center
+      5.1 List layout
+      5.2 Checklist document
+      5.3 Read-only acknowledgements
+      5.4 Electronic signature and detail actions
+      5.5 Document Center responsive rules
+   6. Gift Reminder
+      6.1 Page toolbar
+      6.2 Empty state
+      6.3 Gift Reminder responsive rules
+   ========================================================================== */
+
+/* ==========================================================================
+   DASHBOARD
+
+   Scope root: .cmm-page--dashboard
+   Applies to: dashboard.html
+   Purpose: Dashboard-only welcome, summary, service, and support layouts.
+   ========================================================================== */
+
+/* Dashboard: Shared page layout */
+.cmm-page--dashboard {
+  display: grid;
+  gap: var(--cmm-space-5);
+}
+
+.cmm-page--dashboard .cmm-member-overview,
+.cmm-page--dashboard .cmm-dashboard-section,
+.cmm-page--dashboard .cmm-member-support {
+  scroll-margin-block: var(--cmm-space-5);
+}
+
+.cmm-page--dashboard .cmm-member-overview {
+  display: grid;
+  gap: var(--cmm-space-3);
+}
+
+
+/* Dashboard: Welcome and action status */
+.cmm-page--dashboard .cmm-welcome-area {
+  display: grid;
+  gap: var(--cmm-space-selected-2);
+}
+
+.cmm-page--dashboard .cmm-member-summary,
+.cmm-page--dashboard .cmm-action-notice,
+.cmm-page--dashboard .cmm-service-card,
+.cmm-page--dashboard .cmm-member-support {
+  padding: var(--cmm-space-4);
+  border: 1px solid var(--cmm-color-border);
+  border-radius: var(--cmm-radius-md);
+  background: var(--cmm-color-surface);
+}
+
+
+/* Dashboard: Member summary */
+.cmm-page--dashboard .cmm-member-summary {
+  border-block-start: 0.25rem solid var(--cmm-primary-700);
+  box-shadow: var(--cmm-shadow-selected-card);
+}
+
+.cmm-page--dashboard .cmm-member-details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--cmm-space-2) var(--cmm-space-4);
+  margin-block: var(--cmm-space-3);
+}
+
+.cmm-page--dashboard .cmm-member-details__item {
+  min-inline-size: 0;
+  padding-block-end: var(--cmm-space-2);
+  border-block-end: 1px solid var(--cmm-color-border);
+}
+
+.cmm-page--dashboard .cmm-member-details dt {
+  color: var(--cmm-color-text-muted);
+  font-size: var(--cmm-type-body-size);
+  font-weight: var(--cmm-font-weight-medium);
+}
+
+.cmm-page--dashboard .cmm-member-details dd {
+  margin: var(--cmm-space-1) 0 0;
+  overflow-wrap: anywhere;
+  font-weight: var(--cmm-font-weight-bold);
+}
+
+
+/* Dashboard: Action-required treatment */
+.cmm-page--dashboard .cmm-action-notice__label {
+  color: var(--cmm-color-brand-700);
+  font-size: var(--cmm-font-size-sm);
+  font-weight: var(--cmm-font-weight-bold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.cmm-page--dashboard .cmm-action-status {
+  display: flex;
+  min-block-size: 3.25rem;
+  align-items: center;
+  gap: var(--cmm-space-3);
+  padding: var(--cmm-space-selected-2) var(--cmm-space-selected-4);
+  border: 1px solid var(--cmm-status-success-border);
+  border-radius: var(--cmm-radius-selected-sm);
+  background: var(--cmm-status-success-soft);
+  color: var(--cmm-color-text-muted);
+  font-size: var(--cmm-type-body-size);
+}
+
+.cmm-page--dashboard .cmm-action-status strong {
+  color: var(--cmm-status-success);
+}
+
+.cmm-page--dashboard .cmm-action-notice {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: var(--cmm-space-4);
+  border-color: var(--cmm-status-attention-border);
+  border-inline-start: 0.375rem solid var(--cmm-status-attention);
+  background: var(--cmm-status-attention-soft);
+}
+
+.cmm-page--dashboard .cmm-action-notice h2,
+.cmm-page--dashboard .cmm-member-support h2 {
+  font-size: var(--cmm-font-size-lg);
+  line-height: var(--cmm-line-height-tight);
+}
+
+.cmm-page--dashboard .cmm-action-notice h2,
+.cmm-page--dashboard .cmm-action-notice p + p {
+  margin-block-start: var(--cmm-space-1);
+}
+
+.cmm-page--dashboard .cmm-action-notice .cmm-button {
+  border-color: var(--cmm-orange-ui-strong);
+  background: var(--cmm-orange-ui-strong);
+}
+
+
+/* Dashboard: Main and secondary services */
+.cmm-page--dashboard .cmm-dashboard-section {
+  display: grid;
+  gap: var(--cmm-space-4);
+}
+
+.cmm-page--dashboard .cmm-service-grid {
+  display: grid;
+  gap: var(--cmm-space-4);
+}
+
+.cmm-page--dashboard .cmm-service-card {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: var(--cmm-space-4);
+  overflow: hidden;
+  border-block-start: 0.25rem solid var(--cmm-primary-700);
+  box-shadow: var(--cmm-shadow-selected-card);
+}
+
+.cmm-page--dashboard .cmm-service-card__icon,
+.cmm-page--dashboard .cmm-secondary-service__icon {
+  display: inline-grid;
+  inline-size: 2.75rem;
+  block-size: 2.75rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid transparent;
+  border-radius: var(--cmm-radius-selected-sm);
+  background: var(--cmm-primary-100);
+  color: var(--cmm-primary-900);
+}
+
+.cmm-page--dashboard .cmm-service-card__body {
+  display: grid;
+  gap: var(--cmm-space-2);
+}
+
+.cmm-page--dashboard .cmm-service-card__title {
+  font-size: var(--cmm-font-size-lg);
+  line-height: var(--cmm-line-height-tight);
+}
+
+.cmm-page--dashboard .cmm-service-card__body > p,
+.cmm-page--dashboard .cmm-service-card__status,
+.cmm-page--dashboard .cmm-secondary-service__body span,
+.cmm-page--dashboard .cmm-member-support p {
+  font-size: var(--cmm-type-body-size);
+}
+
+.cmm-page--dashboard .cmm-service-card__status {
+  padding: var(--cmm-space-2) var(--cmm-space-3);
+  border-inline-start: 0.25rem solid var(--cmm-color-info);
+  background: var(--cmm-color-surface-subtle);
+}
+
+.cmm-page--dashboard .cmm-service-card > .cmm-button {
+  inline-size: 100%;
+}
+
+.cmm-page--dashboard .cmm-service-card:nth-child(1) {
+  border-block-start-color: var(--cmm-green-ui);
+}
+
+.cmm-page--dashboard .cmm-service-card:nth-child(1) .cmm-service-card__icon {
+  background: var(--cmm-green-ui-soft);
+  color: var(--cmm-green-ui);
+}
+
+.cmm-page--dashboard .cmm-service-card:nth-child(1) .cmm-service-card__status {
+  border-inline-start-color: var(--cmm-green-ui);
+  background: var(--cmm-green-ui-soft);
+}
+
+.cmm-page--dashboard .cmm-service-card:nth-child(2) {
+  border-block-start-color: var(--cmm-blue-ui);
+}
+
+.cmm-page--dashboard .cmm-service-card:nth-child(2) .cmm-service-card__icon {
+  background: var(--cmm-blue-ui-soft);
+  color: var(--cmm-blue-ui);
+}
+
+.cmm-page--dashboard .cmm-service-card:nth-child(2) .cmm-service-card__status {
+  border-inline-start-color: var(--cmm-blue-ui);
+  background: var(--cmm-blue-ui-soft);
+}
+
+.cmm-page--dashboard .cmm-service-card:nth-child(3) {
+  border-block-start-color: var(--cmm-orange-ui);
+}
+
+.cmm-page--dashboard .cmm-service-card:nth-child(3) .cmm-service-card__icon {
+  background: var(--cmm-orange-ui-soft);
+  color: var(--cmm-orange-ui);
+}
+
+.cmm-page--dashboard .cmm-service-card:nth-child(3) .cmm-service-card__status {
+  border-inline-start-color: var(--cmm-orange-ui);
+  background: var(--cmm-orange-ui-soft);
+}
+
+/* Supported service states override category color without changing geometry. */
+.cmm-page--dashboard .cmm-service-card--loading,
+.cmm-page--dashboard .cmm-service-card--empty {
+  border-block-start-color: var(--cmm-status-neutral);
+}
+
+.cmm-page--dashboard .cmm-service-card--loading .cmm-service-card__status,
+.cmm-page--dashboard .cmm-service-card--empty .cmm-service-card__status {
+  border-inline-start-color: var(--cmm-status-neutral);
+  background: var(--cmm-status-neutral-soft);
+}
+
+.cmm-page--dashboard .cmm-service-card--success {
+  border-block-start-color: var(--cmm-status-success);
+}
+
+.cmm-page--dashboard .cmm-service-card--success .cmm-service-card__status {
+  border-inline-start-color: var(--cmm-status-success);
+  background: var(--cmm-status-success-soft);
+}
+
+.cmm-page--dashboard .cmm-service-card--informational {
+  border-block-start-color: var(--cmm-status-info);
+}
+
+.cmm-page--dashboard .cmm-service-card--informational .cmm-service-card__status {
+  border-inline-start-color: var(--cmm-status-info);
+  background: var(--cmm-status-info-soft);
+}
+
+.cmm-page--dashboard .cmm-service-card--action-required {
+  border-block-start-color: var(--cmm-status-attention);
+}
+
+.cmm-page--dashboard .cmm-service-card--action-required .cmm-service-card__status {
+  border-inline-start-color: var(--cmm-status-attention);
+  background: var(--cmm-status-attention-soft);
+}
+
+.cmm-page--dashboard .cmm-service-card--error {
+  border-block-start-color: var(--cmm-status-error);
+}
+
+.cmm-page--dashboard .cmm-service-card--error .cmm-service-card__status {
+  border-inline-start-color: var(--cmm-status-error);
+  background: var(--cmm-status-error-soft);
+}
+
+.cmm-page--dashboard .cmm-secondary-services {
+  display: grid;
+  gap: var(--cmm-space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cmm-page--dashboard .cmm-secondary-service {
+  display: flex;
+  min-block-size: 3rem;
+  align-items: flex-start;
+  gap: var(--cmm-space-3);
+  padding: var(--cmm-space-3) var(--cmm-space-4);
+  border: 1px solid var(--cmm-color-border);
+  border-radius: var(--cmm-radius-selected-md);
+  background: var(--cmm-color-surface);
+  box-shadow: none;
+  color: var(--cmm-color-text);
+  font-weight: var(--cmm-font-weight-medium);
+  text-decoration: none;
+}
+
+.cmm-page--dashboard .cmm-secondary-service:hover {
+  border-color: var(--cmm-primary-500);
+  background: var(--cmm-primary-50);
+}
+
+.cmm-page--dashboard .cmm-secondary-service > .cmm-icon:last-child {
+  margin-inline-start: auto;
+}
+
+.cmm-page--dashboard .cmm-secondary-service__body {
+  display: grid;
+  min-inline-size: 0;
+  gap: var(--cmm-space-1);
+}
+
+.cmm-page--dashboard .cmm-secondary-service__body span {
+  color: var(--cmm-color-text-muted);
+  font-weight: 400;
+}
+
+/* Dashboard: Support area */
+.cmm-page--dashboard .cmm-member-support {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: var(--cmm-space-4);
+  background: var(--cmm-blue-ui-soft);
+}
+
+.cmm-page--dashboard .cmm-member-support p {
+  margin-block-start: var(--cmm-space-1);
+  color: var(--cmm-color-text-muted);
+}
+
+.cmm-page--dashboard .cmm-member-support .cmm-member-support__note {
+  max-inline-size: 30rem;
+  margin: 0;
+  color: var(--cmm-text-secondary);
+  line-height: var(--cmm-type-body-line-height);
+}
+
+
+/* Dashboard: Responsive adjustments */
+@media (min-width: 40rem) {
+  .cmm-page--dashboard .cmm-action-notice,
+  .cmm-page--dashboard .cmm-member-support {
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 48rem) {
+  .cmm-page--dashboard .cmm-member-overview {
+    grid-template-columns: minmax(15rem, 0.7fr) minmax(0, 1.5fr);
+    align-items: start;
+    gap: var(--cmm-space-5);
+  }
+}
+
+@media (min-width: 64rem) {
+  .cmm-page--dashboard .cmm-member-details {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 72rem) {
+  .cmm-page--dashboard .cmm-service-grid,
+  .cmm-page--dashboard .cmm-secondary-services {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 63.99rem) {
+  .cmm-page--dashboard .cmm-service-grid {
+    gap: var(--cmm-space-selected-4);
+  }
+
+  .cmm-page--dashboard .cmm-service-card {
+    gap: calc(var(--cmm-space-selected-4) + var(--cmm-space-selected-1));
+    padding: var(--cmm-space-selected-4);
+  }
+
+  .cmm-page--dashboard .cmm-service-card__body {
+    gap: var(--cmm-space-selected-3);
+  }
+}
+
+@media (max-width: 24.375rem) {
+  .cmm-page--dashboard .cmm-member-details__item:nth-child(3),
+  .cmm-page--dashboard .cmm-member-details__item:nth-child(4) {
+    grid-column: 1 / -1;
+  }
+
+  .cmm-page--dashboard .cmm-member-details__item:nth-child(3) dd {
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+}
+
+@media (max-width: 20rem) {
+  .cmm-page--dashboard .cmm-member-details {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cmm-page--dashboard .cmm-member-details__item {
+    grid-column: 1;
+  }
+}
+
+/* ==========================================================================
+   MEDICAL EXPENSES
+
+   Scope root: .cmm-page--medical-expenses
+   Applies to:
+   - medical-expenses.html
+   - medical-expenses-add.html
+   - medical-expenses-detail.html
+
+   Purpose: Medical Expenses list, form, detail, attachment, and
+   communication layouts that are not shared portal components.
+   ========================================================================== */
+
+/* Medical Expenses: Expense list */
+.cmm-page--medical-expenses .cmm-expenses-table__link {
+  align-items: flex-start;
+  overflow-wrap: anywhere;
+}
+
+
+/* Medical Expenses: Shared page layout */
+.cmm-page--medical-expenses .cmm-expenses-form,
+.cmm-page--medical-expenses .cmm-expenses-detail-card,
+.cmm-page--medical-expenses .cmm-expenses-communication {
+  display: grid;
+  gap: var(--cmm-space-5);
+}
+
+/* Medical Expenses: Add Expense form */
+.cmm-page--medical-expenses .cmm-expenses-form__grid {
+  display: grid;
+  gap: var(--cmm-space-4);
+}
+
+.cmm-page--medical-expenses .cmm-expenses-field,
+.cmm-page--medical-expenses .cmm-expenses-reply {
+  display: grid;
+  gap: var(--cmm-space-2);
+}
+
+.cmm-page--medical-expenses .cmm-expenses-field label,
+.cmm-page--medical-expenses .cmm-expenses-reply label {
+  font-weight: var(--cmm-font-weight-bold);
+}
+
+.cmm-page--medical-expenses .cmm-expenses-control {
+  inline-size: 100%;
+  min-block-size: 2.75rem;
+  padding: var(--cmm-space-2) var(--cmm-space-3);
+  border: 1px solid var(--cmm-color-border);
+  border-radius: var(--cmm-radius-selected-sm);
+  background: var(--cmm-color-surface);
+  color: var(--cmm-color-text);
+}
+
+.cmm-page--medical-expenses .cmm-expenses-control:hover {
+  border-color: var(--cmm-primary-500);
+}
+
+.cmm-page--medical-expenses .cmm-expenses-control:focus-visible {
+  outline: 3px solid var(--cmm-color-focus);
+  outline-offset: 3px;
+}
+
+.cmm-page--medical-expenses .cmm-expenses-control::placeholder {
+  color: var(--cmm-color-text-muted);
+  opacity: 1;
+}
+
+.cmm-page--medical-expenses .cmm-expenses-control--file {
+  padding: var(--cmm-space-1);
+}
+
+.cmm-page--medical-expenses .cmm-expenses-control--file::file-selector-button {
+  min-block-size: 2.25rem;
+  margin-inline-end: var(--cmm-space-3);
+  padding-inline: var(--cmm-space-3);
+  border: 0;
+  border-radius: var(--cmm-radius-sm);
+  background: var(--cmm-primary-100);
+  color: var(--cmm-primary-900);
+  font-weight: var(--cmm-font-weight-bold);
+  cursor: pointer;
+}
+
+.cmm-page--medical-expenses textarea.cmm-expenses-control {
+  min-block-size: 7.5rem;
+  resize: vertical;
+}
+
+.cmm-page--medical-expenses .cmm-expenses-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--cmm-space-3);
+  padding-block-start: var(--cmm-space-4);
+  border-block-start: 1px solid var(--cmm-color-border);
+}
+
+.cmm-page--medical-expenses .cmm-expenses-form__actions .cmm-button {
+  flex: 1 1 9rem;
+}
+
+
+/* Medical Expenses: Detail metadata */
+.cmm-page--medical-expenses .cmm-expenses-metadata__list,
+.cmm-page--medical-expenses .cmm-expenses-summary {
+  display: grid;
+  gap: var(--cmm-space-4);
+  margin: 0;
+}
+
+.cmm-page--medical-expenses .cmm-expenses-metadata__item,
+.cmm-page--medical-expenses .cmm-expenses-summary__item {
+  min-inline-size: 0;
+}
+
+.cmm-page--medical-expenses .cmm-expenses-metadata__item dt,
+.cmm-page--medical-expenses .cmm-expenses-summary__item dt {
+  color: var(--cmm-color-text-muted);
+  font-size: var(--cmm-font-size-sm);
+  font-weight: var(--cmm-font-weight-medium);
+}
+
+.cmm-page--medical-expenses .cmm-expenses-metadata__item dd,
+.cmm-page--medical-expenses .cmm-expenses-summary__item dd {
+  margin: var(--cmm-space-1) 0 0;
+  overflow-wrap: anywhere;
+}
+
+.cmm-page--medical-expenses .cmm-expenses-metadata__item dd {
+  font-weight: var(--cmm-font-weight-bold);
+}
+
+.cmm-page--medical-expenses .cmm-expenses-detail-section {
+  display: grid;
+  gap: var(--cmm-space-4);
+}
+
+.cmm-page--medical-expenses .cmm-expenses-detail-section + .cmm-expenses-detail-section {
+  padding-block-start: var(--cmm-space-5);
+  border-block-start: 1px solid var(--cmm-color-border);
+}
+
+
+/* Medical Expenses: Attachments */
+.cmm-page--medical-expenses .cmm-expenses-attachments {
+  display: grid;
+  gap: var(--cmm-space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cmm-page--medical-expenses .cmm-expenses-attachment {
+  display: flex;
+  min-block-size: 2.75rem;
+  align-items: center;
+  gap: var(--cmm-space-3);
+  padding: var(--cmm-space-2) var(--cmm-space-3);
+  border: 1px solid var(--cmm-color-border);
+  border-radius: var(--cmm-radius-selected-sm);
+  background: var(--cmm-color-surface-subtle);
+  overflow-wrap: anywhere;
+}
+
+.cmm-page--medical-expenses .cmm-expenses-attachment .cmm-icon {
+  color: var(--cmm-primary-700);
+}
+
+
+/* Medical Expenses: Communication panel */
+.cmm-page--medical-expenses .cmm-expenses-message {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--cmm-space-3);
+  padding: var(--cmm-space-4);
+  border-radius: var(--cmm-radius-selected-md);
+  background: var(--cmm-blue-ui-soft);
+}
+
+.cmm-page--medical-expenses .cmm-expenses-message__icon {
+  display: inline-grid;
+  inline-size: 2.75rem;
+  block-size: 2.75rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: var(--cmm-radius-selected-sm);
+  background: var(--cmm-color-surface);
+  color: var(--cmm-primary-700);
+}
+
+.cmm-page--medical-expenses .cmm-expenses-message h3 {
+  margin: 0;
+  font-size: var(--cmm-font-size-lg);
+  line-height: var(--cmm-line-height-tight);
+}
+
+.cmm-page--medical-expenses .cmm-expenses-message p {
+  margin-block-start: var(--cmm-space-1);
+}
+
+.cmm-page--medical-expenses .cmm-expenses-reply .cmm-button {
+  inline-size: 100%;
+}
+
+
+/* Medical Expenses: Responsive adjustments */
+@media (min-width: 40rem) {
+  .cmm-page--medical-expenses .cmm-expenses-form__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cmm-page--medical-expenses .cmm-expenses-field--wide {
+    grid-column: 1 / -1;
+  }
+
+  .cmm-page--medical-expenses .cmm-expenses-form__actions .cmm-button {
+    flex: 0 0 auto;
+  }
+
+  .cmm-page--medical-expenses .cmm-expenses-metadata__list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .cmm-page--medical-expenses .cmm-expenses-metadata__item + .cmm-expenses-metadata__item {
+    padding-inline-start: var(--cmm-space-4);
+    border-inline-start: 1px solid var(--cmm-color-border);
+  }
+
+  .cmm-page--medical-expenses .cmm-expenses-summary__item {
+    display: grid;
+    grid-template-columns: 9rem minmax(0, 1fr);
+    gap: var(--cmm-space-4);
+  }
+
+  .cmm-page--medical-expenses .cmm-expenses-summary__item dd {
+    margin-block-start: 0;
+  }
+
+  .cmm-page--medical-expenses .cmm-expenses-reply .cmm-button {
+    inline-size: auto;
+    justify-self: end;
+  }
+}
+
+/* ==========================================================================
+   CHANGE PAYMENT METHOD
+
+   Scope root: .cmm-page--change-payment-method
+   Applies to: change-payment-method.html
+
+   Purpose: Payment preference, bank information, referral, notification,
+   agreement, and page-action layouts specific to payment-method management.
+   ========================================================================== */
+
+/* Change Payment Method: Page layout */
+.cmm-page--change-payment-method {
+  inline-size: 100%;
+  max-inline-size: 60rem;
+  gap: var(--cmm-space-5);
+  justify-self: center;
+}
+
+/* Change Payment Method: Section spacing */
+.cmm-page--change-payment-method .cmm-payment-method-content,
+.cmm-page--change-payment-method .cmm-payment-section {
+  display: grid;
+  gap: var(--cmm-space-4);
+}
+
+.cmm-page--change-payment-method .cmm-payment-method-content {
+  gap: var(--cmm-space-4);
+}
+
+.cmm-page--change-payment-method .cmm-payment-billing {
+  gap: var(--cmm-space-2);
+}
+
+/* Change Payment Method: Alternate billing address */
+.cmm-page--change-payment-method .cmm-payment-billing-address {
+  margin-block-start: var(--cmm-space-2);
+  background: var(--cmm-color-surface-subtle);
+  box-shadow: none;
+}
+
+.cmm-page--change-payment-method .cmm-payment-billing-address__grid {
+  display: grid;
+  gap: var(--cmm-space-4);
+}
+
+/* Change Payment Method: Payment preference groups */
+.cmm-page--change-payment-method .cmm-payment-preferences__grid {
+  display: grid;
+  gap: var(--cmm-space-4);
+}
+
+/* Change Payment Method: Bank Information emphasis */
+.cmm-page--change-payment-method .cmm-payment-bank {
+  overflow: hidden;
+  border-color: var(--cmm-color-brand-700);
+}
+
+.cmm-page--change-payment-method .cmm-payment-bank > summary {
+  padding: var(--cmm-space-3) var(--cmm-space-4);
+  background: var(--cmm-color-brand-700);
+  color: var(--cmm-color-surface);
+}
+
+.cmm-page--change-payment-method .cmm-payment-bank > .cmm-disclosure-card__body {
+  gap: var(--cmm-space-3);
+  border-block-start: 0;
+  background: var(--cmm-color-surface);
+}
+
+.cmm-page--change-payment-method .cmm-payment-bank__account-types,
+.cmm-page--change-payment-method .cmm-payment-bank__fields {
+  display: grid;
+  gap: var(--cmm-space-3);
+}
+
+/* Change Payment Method: Referral and notification */
+.cmm-page--change-payment-method .cmm-payment-referral__grid {
+  display: grid;
+  gap: var(--cmm-space-4);
+}
+
+/* Change Payment Method: Agreement status */
+.cmm-page--change-payment-method .cmm-payment-agreement {
+  display: grid;
+  gap: var(--cmm-space-4);
+  border-block-start: 0.25rem solid var(--cmm-status-attention);
+}
+
+.cmm-page--change-payment-method .cmm-payment-agreement__content {
+  display: grid;
+  gap: var(--cmm-space-2);
+}
+
+.cmm-page--change-payment-method .cmm-payment-agreement p {
+  margin: 0;
+}
+
+.cmm-page--change-payment-method .cmm-payment-agreement > .cmm-button {
+  justify-self: start;
+}
+
+/* Change Payment Method: Page actions */
+.cmm-page--change-payment-method .cmm-payment-page-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--cmm-space-3);
+}
+
+/* Change Payment Method: Responsive adjustments */
+@media (min-width: 48rem) {
+  .cmm-page--change-payment-method .cmm-payment-preferences__grid,
+  .cmm-page--change-payment-method .cmm-payment-bank__account-types,
+  .cmm-page--change-payment-method .cmm-payment-bank__fields,
+  .cmm-page--change-payment-method .cmm-payment-billing-address__grid,
+  .cmm-page--change-payment-method .cmm-payment-referral__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cmm-page--change-payment-method .cmm-payment-billing-address__street {
+    grid-column: 1 / -1;
+  }
+
+  .cmm-page--change-payment-method .cmm-payment-page-actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .cmm-page--change-payment-method .cmm-payment-page-actions .cmm-button {
+    min-inline-size: 8rem;
+  }
+}
+
+/* ==========================================================================
+   DOCUMENT CENTER
+
+   Scope root: .cmm-page--document-center
+   Applies to:
+   - document-center.html
+   - document-center-detail.html
+
+   Purpose: Signed-document listing, checklist display, signature status,
+   and Document Center-specific responsive layouts.
+   ========================================================================== */
+
+/* Document Center: List layout */
+.cmm-page--document-center .cmm-document-link {
+  gap: var(--cmm-space-2);
+}
+
+.cmm-page--document-center .cmm-document-link .cmm-icon {
+  color: var(--cmm-color-brand-700);
+}
+
+.cmm-page--document-center .cmm-document-table .cmm-button {
+  inline-size: 100%;
+}
+
+/* Document Center: Checklist document */
+.cmm-page--document-center-detail {
+  inline-size: 100%;
+  max-inline-size: 64rem;
+  justify-self: center;
+}
+
+.cmm-page--document-center .cmm-document-metadata__list {
+  display: grid;
+  gap: var(--cmm-space-3);
+  margin: 0;
+}
+
+.cmm-page--document-center .cmm-document-metadata__item {
+  min-inline-size: 0;
+}
+
+.cmm-page--document-center .cmm-document-metadata dt {
+  color: var(--cmm-color-text-muted);
+  font-size: var(--cmm-font-size-sm);
+  font-weight: var(--cmm-font-weight-medium);
+}
+
+.cmm-page--document-center .cmm-document-metadata dd {
+  margin: var(--cmm-space-1) 0 0;
+  overflow-wrap: anywhere;
+  font-weight: var(--cmm-font-weight-bold);
+}
+
+.cmm-page--document-center .cmm-document-record {
+  display: grid;
+  gap: var(--cmm-space-4);
+}
+
+/* Document Center: Read-only acknowledgements */
+.cmm-page--document-center .cmm-document-checklist {
+  display: grid;
+}
+
+.cmm-page--document-center .cmm-document-checklist__item {
+  display: grid;
+  align-items: start;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--cmm-space-3);
+  padding-block: var(--cmm-space-4);
+  border-block-end: 1px solid var(--cmm-color-border);
+}
+
+.cmm-page--document-center .cmm-document-checklist__item:first-child {
+  padding-block-start: 0;
+}
+
+.cmm-page--document-center .cmm-document-checklist__item:last-child {
+  padding-block-end: 0;
+  border-block-end: 0;
+}
+
+.cmm-page--document-center .cmm-document-checklist__item input {
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
+  margin: 0.25rem 0 0;
+  accent-color: var(--cmm-status-success);
+  opacity: 1;
+}
+
+.cmm-page--document-center .cmm-document-checklist__item label {
+  display: grid;
+  min-inline-size: 0;
+  gap: var(--cmm-space-2);
+  line-height: var(--cmm-line-height-base);
+  overflow-wrap: anywhere;
+}
+
+.cmm-page--document-center .cmm-document-checklist__item [lang="ko"] {
+  color: var(--cmm-color-text-muted);
+  word-break: keep-all;
+}
+
+/* Document Center: Electronic signature */
+.cmm-page--document-center .cmm-document-signature,
+.cmm-page--document-center .cmm-document-signature__status {
+  display: grid;
+  gap: var(--cmm-space-3);
+}
+
+.cmm-page--document-center .cmm-document-signature__status p {
+  margin: 0;
+}
+
+.cmm-page--document-center .cmm-document-signature__status strong {
+  color: var(--cmm-color-brand-700);
+  font-size: var(--cmm-font-size-xl);
+}
+
+/* Document Center: Detail actions */
+.cmm-page--document-center .cmm-document-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--cmm-space-3);
+}
+
+/* Document Center: Responsive adjustments */
+@media (min-width: 48rem) {
+  .cmm-page--document-center .cmm-document-table .cmm-button {
+    inline-size: auto;
+    min-inline-size: 6rem;
+  }
+
+  .cmm-page--document-center .cmm-document-metadata__list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .cmm-page--document-center .cmm-document-metadata__item + .cmm-document-metadata__item {
+    padding-inline-start: var(--cmm-space-4);
+    border-inline-start: 1px solid var(--cmm-color-border);
+  }
+
+  .cmm-page--document-center .cmm-document-actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .cmm-page--document-center .cmm-document-actions .cmm-button {
+    min-inline-size: 8rem;
+  }
+}
+
+/* ==========================================================================
+   GIFT REMINDER
+
+   Scope root: .cmm-page--gift-reminder
+   Applies to: gift-reminders.html
+
+   Purpose: Provisional gift-reminder toolbar and empty-state layout while
+   final contribution-notice requirements remain under review.
+   ========================================================================== */
+
+/* Gift Reminder: Page toolbar */
+.cmm-page--gift-reminder .cmm-gift-reminder-toolbar {
+  inline-size: 100%;
+}
+
+/* Gift Reminder: Empty state */
+.cmm-page--gift-reminder .cmm-gift-reminder-empty {
+  display: grid;
+  min-block-size: 14rem;
+  align-content: center;
+  justify-items: center;
+  gap: var(--cmm-space-3);
+}
+
+.cmm-page--gift-reminder .cmm-gift-reminder-empty p {
+  max-inline-size: 34rem;
+  margin: 0;
+}
+
+.cmm-page--gift-reminder .cmm-gift-reminder-empty__icon {
+  display: inline-grid;
+  inline-size: 3.5rem;
+  block-size: 3.5rem;
+  place-items: center;
+  border-radius: var(--cmm-radius-selected-md);
+  background: var(--cmm-primary-100);
+  color: var(--cmm-primary-700);
+}
+
+.cmm-page--gift-reminder .cmm-gift-reminder-empty__icon .cmm-icon {
+  inline-size: 2rem;
+  block-size: 2rem;
+}
+
+/* Gift Reminder: Responsive adjustments */
+@media (min-width: 48rem) {
+  .cmm-page--gift-reminder .cmm-gift-reminder-toolbar {
+    inline-size: 12rem;
+  }
+}

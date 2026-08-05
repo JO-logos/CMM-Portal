@@ -1,0 +1,60 @@
+        <main class="cmm-main" id="main-content" tabindex="-1">
+          <div class="cmm-page-layout cmm-expenses-page cmm-page--medical-expenses">
+            <header class="cmm-page-header">
+              <h1 class="cmm-page-header__title">Add Medical Expense</h1>
+              <p class="cmm-page-header__summary">Enter the expense details and add a receipt when available.</p>
+            </header>
+
+            <!-- Future QWeb mapping: cmm_member_portal.medical_expense_form -->
+            <form class="cmm-data-card cmm-expenses-form" action="medical-expenses-detail.html" method="get">
+              <div class="cmm-expenses-form__grid">
+                <div class="cmm-expenses-field cmm-expenses-field--wide">
+                  <label for="expense-description">Description</label>
+                  <input id="expense-description" name="description" type="text" placeholder="Enter expense name/description" autocomplete="off">
+                </div>
+
+                <div class="cmm-expenses-field">
+                  <label for="expense-category">Category</label>
+                  <select id="expense-category" name="category">
+                    <option selected>Gift</option>
+                    <option>Hospital</option>
+                    <option>Pharmacy</option>
+                    <option>Dental</option>
+                    <option>Vision</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+
+                <div class="cmm-expenses-field">
+                  <label for="expense-member">Family Member</label>
+                  <select id="expense-member" name="family_member">
+                    <option value="" selected>Select...</option>
+                    <option>Jungoh Kim</option>
+                    <option>Spouse</option>
+                    <option>Dependent</option>
+                  </select>
+                </div>
+
+                <div class="cmm-expenses-field">
+                  <label for="expense-price">Unit Price $</label>
+                  <input id="expense-price" name="unit_price" type="text" inputmode="decimal" placeholder="Enter unit price/cost $" autocomplete="off">
+                </div>
+
+                <div class="cmm-expenses-field">
+                  <label for="expense-receipt">Add Receipt</label>
+                  <input class="cmm-expense-control--file" id="expense-receipt" name="receipt" type="file" accept=".pdf,.png,.jpg,.jpeg">
+                </div>
+
+                <div class="cmm-expenses-field cmm-expenses-field--wide">
+                  <label for="expense-notes">Notes</label>
+                  <textarea id="expense-notes" name="notes" rows="5" placeholder="Enter a more detailed description of the expense. Enter &quot;None&quot; to leave empty."></textarea>
+                </div>
+              </div>
+
+              <div class="cmm-expenses-form__actions">
+                <a class="cmm-button" href="medical-expenses.html">Discard</a>
+                <a class="cmm-button cmm-button--primary" href="medical-expenses-detail.html">Create Expense</a>
+              </div>
+            </form>
+          </div>
+        </main>

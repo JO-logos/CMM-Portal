@@ -1,0 +1,49 @@
+:root {
+  color-scheme: light;
+
+  --cmm-color-brand-700: #174f46;
+  --cmm-color-brand-600: #1d665a;
+  --cmm-color-brand-100: #dff2ed;
+  --cmm-color-surface: #ffffff;
+  --cmm-color-surface-subtle: #f4f7f6;
+  --cmm-color-surface-muted: #e9eeec;
+  --cmm-color-text: #17211f;
+  --cmm-color-text-muted: #53635f;
+  --cmm-color-border: #cbd7d4;
+  --cmm-color-focus: #075fcc;
+  --cmm-color-info: #155e75;
+  --cmm-color-success: #256b45;
+  --cmm-color-warning: #8a4b08;
+  --cmm-color-error: #a12424;
+  --cmm-color-overlay: rgb(23 33 31 / 55%);
+
+  --cmm-font-sans: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", Inter, system-ui, sans-serif;
+  --cmm-font-size-sm: 0.875rem;
+  --cmm-font-size-base: 1rem;
+  --cmm-font-size-lg: 1.125rem;
+  --cmm-font-size-xl: clamp(1.75rem, 7vw, 2.5rem);
+  --cmm-font-size-page-title: clamp(1.5rem, 6vw, 2.25rem);
+  --cmm-line-height-tight: 1.3;
+  --cmm-line-height-base: 1.65;
+  --cmm-font-weight-medium: 500;
+  --cmm-font-weight-bold: 700;
+
+  --cmm-space-1: 0.25rem;
+  --cmm-space-2: 0.5rem;
+  --cmm-space-3: 0.75rem;
+  --cmm-space-4: 1rem;
+  --cmm-space-5: 1.5rem;
+  --cmm-space-6: 2rem;
+  --cmm-space-7: 3rem;
+
+  --cmm-radius-sm: 0.375rem;
+  --cmm-radius-md: 0.75rem;
+  --cmm-radius-lg: 1rem;
+
+  --cmm-shadow-sm: 0 1px 3px rgb(23 33 31 / 12%);
+  --cmm-shadow-md: 0 8px 24px rgb(23 33 31 / 12%);
+
+  --cmm-content-max: 82rem;
+  --cmm-sidebar-width: 16rem;
+  --cmm-motion-fast: 150ms;
+}

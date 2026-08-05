@@ -1,0 +1,93 @@
+      <aside class="cmm-sidebar" id="portal-navigation" aria-labelledby="sidebar-title" data-cmm-sidebar>
+        <div class="cmm-sidebar__header">
+          <span class="cmm-screen-reader-only" id="sidebar-title">Portal navigation</span>
+          <a class="cmm-sidebar-brand" href="dashboard.html">
+            <!-- Replace this single external SVG file to update the selected authenticated-portal logo everywhere. -->
+            <img class="cmm-sidebar-brand__logo" src="../assets/brand/cmm-logo-w.svg" alt="CMM Member Portal">
+          </a>
+          <button class="cmm-icon-button cmm-sidebar__close" type="button" data-cmm-nav-close aria-label="Close portal menu">
+            <svg class="cmm-icon" aria-hidden="true"><use href="../assets/icons/cmm-ui-icons.svg#cmm-icon-close"></use></svg>
+          </button>
+        </div>
+        <div class="cmm-mobile-menu-utility">
+          <section class="cmm-mobile-menu-profile cmm-account-summary" aria-labelledby="mobile-account-name">
+            <strong class="cmm-mobile-menu-profile__name cmm-account-summary__name" id="mobile-account-name">Jungoh Kim</strong>
+            <span class="cmm-account-summary__email cmm-account-summary__email--inverse">kjohaha@gmail.com</span>
+            <a class="cmm-mobile-menu-profile__link" href="edit-information.html">Edit Information</a>
+          </section>
+          <button class="cmm-mobile-menu-notifications" type="button" aria-describedby="prototype-notifications-note">
+            <svg class="cmm-icon" aria-hidden="true"><use href="../assets/icons/cmm-ui-icons.svg#cmm-icon-bell"></use></svg>
+            <span>Notifications</span>
+            <span class="cmm-mobile-menu-notifications__count" aria-label="1 notification">1</span>
+          </button>
+        </div>
+        <nav class="cmm-sidebar__nav" aria-label="Portal navigation">
+          <ul class="cmm-nav-list">
+            <li class="cmm-nav-list__item">
+              <a class="cmm-nav-link{{ACTIVE_DASHBOARD_CLASS}}" href="dashboard.html"{{ACTIVE_DASHBOARD_ARIA}}>
+                <svg class="cmm-icon" aria-hidden="true"><use href="../assets/icons/cmm-ui-icons.svg#cmm-icon-home"></use></svg>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li class="cmm-nav-list__item">
+              <a class="cmm-nav-link{{ACTIVE_MY_MEMBERSHIP_CLASS}}" href="my-membership.html"{{ACTIVE_MY_MEMBERSHIP_ARIA}}>
+                <svg class="cmm-icon" aria-hidden="true"><use href="../assets/icons/cmm-ui-icons.svg#cmm-icon-membership"></use></svg>
+                <span>My Membership</span>
+              </a>
+            </li>
+            <li class="cmm-nav-list__item">
+              <a class="cmm-nav-link{{ACTIVE_MEDICAL_EXPENSES_CLASS}}" href="medical-expenses.html"{{ACTIVE_MEDICAL_EXPENSES_ARIA}}>
+                <svg class="cmm-icon" aria-hidden="true"><use href="../assets/icons/cmm-ui-icons.svg#cmm-icon-medical"></use></svg>
+                <span>Medical Expenses</span>
+              </a>
+            </li>
+            <li class="cmm-nav-list__item">
+              <a class="cmm-nav-link{{ACTIVE_CHANGE_PAYMENT_METHOD_CLASS}}" href="change-payment-method.html"{{ACTIVE_CHANGE_PAYMENT_METHOD_ARIA}}>
+                <svg class="cmm-icon" aria-hidden="true"><use href="../assets/icons/cmm-ui-icons.svg#cmm-icon-payment"></use></svg>
+                <span>Payment Method</span>
+              </a>
+            </li>
+            <li class="cmm-nav-list__item">
+              <a class="cmm-nav-link{{ACTIVE_DOCUMENT_CENTER_CLASS}}" href="document-center.html"{{ACTIVE_DOCUMENT_CENTER_ARIA}}>
+                <svg class="cmm-icon" aria-hidden="true"><use href="../assets/icons/cmm-ui-icons.svg#cmm-icon-document"></use></svg>
+                <span>Document Center</span>
+              </a>
+            </li>
+            <li class="cmm-nav-list__item">
+              <a class="cmm-nav-link{{ACTIVE_GIFT_REMINDERS_CLASS}}" href="gift-reminders.html"{{ACTIVE_GIFT_REMINDERS_ARIA}}>
+                <svg class="cmm-icon" aria-hidden="true"><use href="../assets/icons/cmm-ui-icons.svg#cmm-icon-giving"></use></svg>
+                <span>Gift Reminder</span>
+              </a>
+            </li>
+          </ul>
+          <div class="cmm-nav-group">
+            <p class="cmm-nav-group__label">Account Settings</p>
+            <ul class="cmm-nav-list cmm-nav-list--nested cmm-sidebar-utility-links">
+              <li class="cmm-nav-list__item">
+                <a class="cmm-nav-link cmm-nav-link--child" href="edit-information.html">
+                  <svg class="cmm-icon" aria-hidden="true"><use href="../assets/icons/cmm-ui-icons.svg#cmm-icon-account"></use></svg>
+                  <span>Edit Information</span>
+                </a>
+              </li>
+              <li class="cmm-nav-list__item">
+                <a class="cmm-nav-link cmm-nav-link--child" href="settings-security.html">
+                  <svg class="cmm-icon" aria-hidden="true"><use href="../assets/icons/cmm-ui-icons.svg#cmm-icon-security"></use></svg>
+                  <span>Settings &amp; Security</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="cmm-nav-support">
+            <a class="cmm-nav-link" href="dashboard.html">
+              <svg class="cmm-icon" aria-hidden="true"><use href="../assets/icons/cmm-ui-icons.svg#cmm-icon-help"></use></svg>
+              <span>Member Support</span>
+            </a>
+          </div>
+          <div class="cmm-nav-session">
+            <button class="cmm-nav-link cmm-nav-link--button" type="button" aria-describedby="prototype-sign-out-note">
+              <svg class="cmm-icon" aria-hidden="true"><use href="../assets/icons/cmm-ui-icons.svg#cmm-icon-signout"></use></svg>
+              <span>Sign Out</span>
+            </button>
+          </div>
+        </nav>
+      </aside>
