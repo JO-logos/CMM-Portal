@@ -16,8 +16,21 @@
   --cmm-color-warning: #8a4b08;
   --cmm-color-error: #a12424;
   --cmm-color-overlay: rgb(23 33 31 / 55%);
+  --cmm-color-login-overlay: rgb(0 0 0 / 50%);
+  --cmm-color-login-base: #000000;
+  --cmm-color-login-footer: rgb(0 0 0 / 58%);
+  --cmm-color-login-text: #ffffff;
+  --cmm-color-login-control-text: #17211f;
+  --cmm-color-login-placeholder: #8a9290;
+  --cmm-color-login-action: #49c541;
+  --cmm-color-login-action-hover: #3caf35;
+  --cmm-color-login-divider: rgb(255 255 255 / 20%);
+  --cmm-color-login-surface-muted: rgb(255 255 255 / 14%);
 
   --cmm-font-sans: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", Inter, system-ui, sans-serif;
+  --cmm-font-login: "Segoe UI", Arial, system-ui, sans-serif;
+  --cmm-font-clock: "DM Sans", "Segoe UI", Arial, system-ui, sans-serif;
+  --cmm-font-size-xs: 0.75rem;
   --cmm-font-size-sm: 0.875rem;
   --cmm-font-size-base: 1rem;
   --cmm-font-size-lg: 1.125rem;
@@ -46,4 +59,14 @@
   --cmm-content-max: 82rem;
   --cmm-sidebar-width: 16rem;
   --cmm-motion-fast: 150ms;
+  --cmm-motion-bounce: 520ms;
+
+  --cmm-login-form-width: 17.75rem;
+  --cmm-login-content-width: 40rem;
+  --cmm-login-footer-height: 4rem;
+  --cmm-login-time-size: clamp(4.25rem, 5.25vw, 5.25rem);
+  --cmm-login-date-size: clamp(1.25rem, 1.8vw, 1.75rem);
+  --cmm-login-field-gap: 0.625rem;
+  --cmm-login-organization-gap: 3.5rem;
+  --cmm-login-footer-padding-block: 0.9375rem;
 }
