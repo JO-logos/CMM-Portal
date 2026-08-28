@@ -1,0 +1,93 @@
+    <a class="cmm-login-skip-link" href="#main-content">Skip to member login</a>
+    <div class="cmm-login-background" data-cmm-login-background aria-hidden="true"></div>
+    <div class="cmm-login-overlay" aria-hidden="true"></div>
+
+    <section class="cmm-local-weather" aria-label="Current local weather" data-cmm-weather aria-live="polite">
+      <svg class="cmm-local-weather__icon" aria-hidden="true">
+        <use data-cmm-weather-icon href="../assets/icons/cmm-weather-icons.svg#cmm-weather-cloudy"></use>
+      </svg>
+      <div class="cmm-local-weather__details">
+        <p class="cmm-local-weather__temperature" data-cmm-weather-temperature aria-label="Local temperature unavailable">--°</p>
+        <p class="cmm-local-weather__location" data-cmm-weather-location>Getting local weather…</p>
+      </div>
+      <p class="cmm-login-screen-reader-only">Weather data provided by Open-Meteo.</p>
+    </section>
+
+    <main class="cmm-login-main" id="main-content">
+      <div class="cmm-login-content">
+        <header class="cmm-login-brand">
+          <img class="cmm-login-brand__logo" src="../assets/brand/cmm-logo-w.svg" alt="CMM">
+          <h1 class="cmm-login-screen-reader-only">CMM Member Portal</h1>
+        </header>
+
+        <section class="cmm-login-clock" aria-label="Current device time and date">
+          <time class="cmm-login-clock__time" data-cmm-device-time>--:-- --</time>
+          <p class="cmm-login-clock__date">
+            <strong data-cmm-device-weekday>---</strong><span data-cmm-device-date>, --- --, ----</span>
+          </p>
+        </section>
+
+        <form class="cmm-login-form" action="#" method="post" data-cmm-login-form>
+          <h2 class="cmm-login-form__title">Member Login</h2>
+
+          <label class="cmm-login-screen-reader-only" for="cmm-login-email">Email</label>
+          <input class="cmm-login-field" id="cmm-login-email" name="login" type="email" autocomplete="username" placeholder="Email" required>
+
+          <label class="cmm-login-screen-reader-only" for="cmm-login-password">Password</label>
+          <div class="cmm-login-password">
+            <input class="cmm-login-field cmm-login-password__field" id="cmm-login-password" name="password" type="password" autocomplete="current-password" placeholder="Password" required data-cmm-password-field>
+            <button class="cmm-login-password__toggle" type="button" data-cmm-password-toggle aria-controls="cmm-login-password" aria-pressed="false">Show</button>
+          </div>
+          <p class="cmm-login-form__note" data-cmm-caps-lock hidden>Caps Lock is on.</p>
+
+          <p class="cmm-login-form__status" data-cmm-login-status role="status" hidden></p>
+          <button class="cmm-login-submit" type="submit" data-cmm-login-submit>Log In</button>
+
+          <nav class="cmm-login-help" aria-label="Login help">
+            <a class="cmm-login-help__link" href="#">Reset Password</a>
+            <p class="cmm-login-help__signup">Don’t have an account? <a class="cmm-login-help__link" href="#">Create an account</a></p>
+          </nav>
+        </form>
+
+        <nav class="cmm-organization-links" aria-label="CMM organization websites">
+          <ul class="cmm-organization-links__list">
+            <li class="cmm-organization-link">
+              <a class="cmm-organization-link__anchor" href="https://logosmissions.org/" target="_blank" rel="noopener noreferrer">
+                <span class="cmm-organization-link__logo-wrap">
+                  <img class="cmm-organization-link__logo" src="../assets/brand/logos-missions-logo.svg" alt="">
+                </span>
+                <span class="cmm-organization-link__label">Logos Missions<br>Website</span>
+              </a>
+            </li>
+            <li class="cmm-organization-link">
+              <a class="cmm-organization-link__anchor" href="https://cmmlogos.org/" target="_blank" rel="noopener noreferrer">
+                <span class="cmm-organization-link__logo-wrap">
+                  <img class="cmm-organization-link__logo cmm-organization-link__logo--inset" src="../assets/brand/cmm-logo.svg" alt="">
+                </span>
+                <span class="cmm-organization-link__label">CMM<br>Website</span>
+              </a>
+            </li>
+            <li class="cmm-organization-link">
+              <a class="cmm-organization-link__anchor" href="https://kcjlogos.org/" target="_blank" rel="noopener noreferrer">
+                <span class="cmm-organization-link__logo-wrap">
+                  <img class="cmm-organization-link__logo" src="../assets/brand/korean-christian-journal-logo.svg" alt="">
+                </span>
+                <span class="cmm-organization-link__label">Korean&nbsp;Christian<br>Journal&nbsp;Website</span>
+              </a>
+            </li>
+            <li class="cmm-organization-link">
+              <a class="cmm-organization-link__anchor" href="https://www.youtube.com/@LogosChapel" target="_blank" rel="noopener noreferrer">
+                <span class="cmm-organization-link__logo-wrap">
+                  <img class="cmm-organization-link__logo cmm-organization-link__logo--inset" src="../assets/brand/logos-chapel-logo.svg" alt="">
+                </span>
+                <span class="cmm-organization-link__label">Logos Chapel<br>Website</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </main>
+
+    <footer class="cmm-login-footer">
+      <p>Christian Mutual Med-Aid Member Portal&nbsp; | &nbsp;2315 Sanders Rd. Northbrook IL 60062&nbsp; | &nbsp;Phone (773) 777-8889&nbsp; | &nbsp;<a href="mailto:info@cmmlogos.org">info@cmmlogos.org</a></p>
+    </footer>

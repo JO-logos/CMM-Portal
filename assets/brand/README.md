@@ -11,3 +11,14 @@ The logo is referenced through normal external `<img>` elements with `object-fit
 Future Odoo asset path:
 
 `cmm_member_portal/static/src/img/cmm-logo-w.svg`
+
+## Public login-page logos
+
+The login page also uses these approved external SVG assets:
+
+- `cmm-logo.svg`
+- `logos-missions-logo.svg`
+- `korean-christian-journal-logo.svg`
+- `logos-chapel-logo.svg`
+
+Their common white circular presentation is controlled by `prototype/css/login.css`. Keep the supplied artwork transparent and do not bake the CSS circle into replacement files.
