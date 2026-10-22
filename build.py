@@ -206,17 +206,72 @@ def render_page(
     return html.rstrip() + "\n"
 
 
-def render_login_page(shell: str) -> str:
-    page_content = read_required(SOURCE_DIR / "pages" / "login.html")
+def render_auth_page(
+    shell: str,
+    auth_layout: str,
+    *,
+    output_name: str,
+    source_name: str,
+    title: str,
+    description: str,
+    body_class: str,
+    page_heading: str,
+    skip_link_text: str,
+    active_signup_step: int | None = None,
+    show_context_widgets: bool = False,
+    show_organization_links: bool = False,
+) -> str:
+    auth_form = read_required(SOURCE_DIR / "pages" / source_name)
+    if active_signup_step is not None:
+        signup_steps = read_required(SOURCE_DIR / "partials" / "signup-steps.html")
+        step_values: dict[str, str] = {}
+        for step_number in range(1, 4):
+            is_active = step_number == active_signup_step
+            step_values[f"STEP_{step_number}_CLASS"] = (
+                " cmm-signup-step--active" if is_active else ""
+            )
+            step_values[f"STEP_{step_number}_ARIA"] = (
+                ' aria-current="step"' if is_active else ""
+            )
+        auth_form = auth_form.replace(
+            "{{SIGNUP_STEPS}}",
+            replace_tokens(signup_steps, step_values).rstrip(),
+        )
+    page_content = replace_tokens(
+        auth_layout,
+        {
+            "PAGE_HEADING": page_heading,
+            "SKIP_LINK_TEXT": skip_link_text,
+            "WEATHER_WIDGET": (
+                read_required(SOURCE_DIR / "partials" / "auth-weather.html").rstrip()
+                if show_context_widgets
+                else ""
+            ),
+            "DEVICE_CLOCK": (
+                read_required(SOURCE_DIR / "partials" / "auth-clock.html").rstrip()
+                if show_context_widgets
+                else ""
+            ),
+            "ORGANIZATION_LINKS": (
+                read_required(
+                    SOURCE_DIR / "partials" / "auth-organization-links.html"
+                ).rstrip()
+                if show_organization_links
+                else ""
+            ),
+            "AUTH_FORM": auth_form,
+        },
+    )
     html = replace_tokens(
         shell,
         {
-            "PAGE_TITLE": "CMM Member Portal — Member Login",
-            "PAGE_DESCRIPTION": "Sign in to the Christian Mutual Med-Aid member portal",
+            "PAGE_TITLE": title,
+            "PAGE_DESCRIPTION": description,
+            "BODY_CLASS": body_class,
             "PAGE_CONTENT": page_content,
         },
     )
-    ensure_output_policy(html, "login.html")
+    ensure_output_policy(html, output_name)
     return html.rstrip() + "\n"
 
 
@@ -300,12 +355,61 @@ def write_output(path: Path, html: str) -> None:
 def build(check_only: bool) -> None:
     shell, partials = load_sources()
     login_shell = read_required(SOURCE_DIR / "layouts" / "login-shell.html")
+    auth_layout = read_required(SOURCE_DIR / "layouts" / "auth-page.html")
     backgrounds = discover_backgrounds()
     rendered_pages = {
         page.output_name: render_page(page, shell, partials)
         for page in PAGES
     }
-    rendered_pages["login.html"] = render_login_page(login_shell)
+    rendered_pages["login.html"] = render_auth_page(
+        login_shell,
+        auth_layout,
+        output_name="login.html",
+        source_name="login.html",
+        title="CMM Member Portal — Member Login",
+        description="Sign in to the Christian Mutual Med-Aid member portal",
+        body_class="cmm-login-page",
+        page_heading="CMM Member Portal",
+        skip_link_text="Skip to member login",
+        show_context_widgets=True,
+        show_organization_links=True,
+    )
+    rendered_pages["signup.html"] = render_auth_page(
+        login_shell,
+        auth_layout,
+        output_name="signup.html",
+        source_name="signup.html",
+        title="CMM Member Portal — Member Verification",
+        description="Verify an existing Christian Mutual Med-Aid membership before creating a portal account",
+        body_class="cmm-login-page cmm-signup-page",
+        page_heading="CMM Member Verification",
+        skip_link_text="Skip to member verification",
+        active_signup_step=1,
+    )
+    rendered_pages["signup-qualifications.html"] = render_auth_page(
+        login_shell,
+        auth_layout,
+        output_name="signup-qualifications.html",
+        source_name="signup-qualifications.html",
+        title="CMM Member Portal — Membership Qualifications",
+        description="Review the qualifications for Christian Mutual Med-Aid membership",
+        body_class="cmm-login-page cmm-signup-page cmm-qualification-page",
+        page_heading="Qualifications of CMM Members 회원 자격 조건",
+        skip_link_text="Skip to membership qualifications",
+        active_signup_step=2,
+    )
+    rendered_pages["signup-account.html"] = render_auth_page(
+        login_shell,
+        auth_layout,
+        output_name="signup-account.html",
+        source_name="signup-account.html",
+        title="CMM Member Portal — Create Account",
+        description="Create a Christian Mutual Med-Aid member portal account",
+        body_class="cmm-login-page cmm-signup-page cmm-account-setup-page",
+        page_heading="Create Your Portal Account",
+        skip_link_text="Skip to account creation",
+        active_signup_step=3,
+    )
     generated_assets = {
         BACKGROUND_CSS_PATH: render_background_css(backgrounds),
         BACKGROUND_JS_PATH: render_background_js(backgrounds),

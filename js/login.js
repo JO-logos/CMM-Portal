@@ -69,30 +69,33 @@
   }
 
   function initializePasswordControls() {
-    const password = document.querySelector("[data-cmm-password-field]");
-    const toggle = document.querySelector("[data-cmm-password-toggle]");
+    const controls = document.querySelectorAll("[data-cmm-password-control]");
     const capsLockNote = document.querySelector("[data-cmm-caps-lock]");
-    if (!password || !toggle) return;
-
-    toggle.addEventListener("click", () => {
-      const willShow = password.type === "password";
-      password.type = willShow ? "text" : "password";
-      toggle.textContent = willShow ? "Hide" : "Show";
-      toggle.setAttribute("aria-pressed", String(willShow));
-      password.focus();
-    });
-
-    if (!capsLockNote) return;
+    if (!controls.length) return;
 
     function updateCapsLock(event) {
       const capsLockOn = event.getModifierState?.("CapsLock") ?? false;
-      capsLockNote.hidden = !capsLockOn;
+      if (capsLockNote) capsLockNote.hidden = !capsLockOn;
     }
 
-    password.addEventListener("keydown", updateCapsLock);
-    password.addEventListener("keyup", updateCapsLock);
-    password.addEventListener("blur", () => {
-      capsLockNote.hidden = true;
+    controls.forEach((control) => {
+      const password = control.querySelector("input");
+      const toggle = control.querySelector("[data-cmm-password-toggle]");
+      if (!password || !toggle) return;
+
+      toggle.addEventListener("click", () => {
+        const willShow = password.type === "password";
+        password.type = willShow ? "text" : "password";
+        toggle.textContent = willShow ? "Hide" : "Show";
+        toggle.setAttribute("aria-pressed", String(willShow));
+        password.focus();
+      });
+
+      password.addEventListener("keydown", updateCapsLock);
+      password.addEventListener("keyup", updateCapsLock);
+      password.addEventListener("blur", () => {
+        if (capsLockNote) capsLockNote.hidden = true;
+      });
     });
   }
 
@@ -119,7 +122,7 @@
 
     form.addEventListener("submit", (event) => {
       event.preventDefault();
-      if (!form.reportValidity()) return;
+      if (!form.checkValidity()) return;
 
       submit.disabled = true;
       submit.textContent = "Logging in…";
@@ -129,6 +132,104 @@
         submit.disabled = false;
         submit.textContent = "Log In";
         showStatus("Login is not connected in this design prototype.", "warning");
+      }, 700);
+    });
+  }
+
+  function initializeMemberVerificationForm() {
+    const form = document.querySelector("[data-cmm-member-verification-form]");
+    const submit = form?.querySelector("[data-cmm-member-verification-submit]");
+    const status = form?.querySelector("[data-cmm-member-verification-status]");
+    if (!form || !submit || !status) return;
+
+    function showStatus(message, state) {
+      status.textContent = message;
+      status.dataset.cmmMemberVerificationState = state;
+      status.setAttribute("role", state === "error" ? "alert" : "status");
+      status.hidden = false;
+    }
+
+    form.addEventListener("invalid", () => {
+      showStatus("Please enter your Email address, or First Name, Last Name, Date of Birth, and ZIP Code.", "error");
+    }, true);
+
+    form.addEventListener("input", () => {
+      status.hidden = true;
+      delete status.dataset.cmmMemberVerificationState;
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!form.checkValidity()) return;
+
+      submit.disabled = true;
+      submit.textContent = "Checking membership…";
+      showStatus("Checking for an existing member record…", "loading");
+
+      window.setTimeout(() => {
+        submit.disabled = false;
+        submit.textContent = "Check Membership Status";
+        showStatus("Membership verification is not connected in this design prototype.", "warning");
+      }, 700);
+    });
+  }
+
+  function initializeQualificationForm() {
+    const form = document.querySelector("[data-cmm-qualification-form]");
+    if (!form) return;
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      window.location.assign(form.action);
+    });
+  }
+
+  function initializeAccountForm() {
+    const form = document.querySelector("[data-cmm-account-form]");
+    const password = form?.querySelector("[name='password']");
+    const confirmation = form?.querySelector("[name='password_confirmation']");
+    const submit = form?.querySelector("[data-cmm-account-submit]");
+    const status = form?.querySelector("[data-cmm-account-status]");
+    if (!form || !password || !confirmation || !submit || !status) return;
+
+    function showStatus(message, state) {
+      status.textContent = message;
+      status.dataset.cmmAccountState = state;
+      status.setAttribute("role", state === "error" ? "alert" : "status");
+      status.hidden = false;
+    }
+
+    function updatePasswordMatch() {
+      const passwordsMatch = !confirmation.value || password.value === confirmation.value;
+      confirmation.setCustomValidity(passwordsMatch ? "" : "Passwords do not match.");
+    }
+
+    form.addEventListener("invalid", () => {
+      showStatus(
+        confirmation.validity.customError
+          ? "The passwords do not match. Please enter the same password twice."
+          : "Complete every field with valid account information.",
+        "error",
+      );
+    }, true);
+
+    form.addEventListener("input", () => {
+      updatePasswordMatch();
+      status.hidden = true;
+      delete status.dataset.cmmAccountState;
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      updatePasswordMatch();
+      if (!form.checkValidity()) return;
+
+      submit.disabled = true;
+      submit.textContent = "Creating account…";
+      window.setTimeout(() => {
+        submit.disabled = false;
+        submit.textContent = "Create Account";
+        showStatus("Account creation is not connected in this design prototype.", "warning");
       }, 700);
     });
   }
@@ -276,6 +377,10 @@
     initializeClock();
     initializePasswordControls();
     initializeLoginForm();
+    initializeMemberVerificationForm();
+    initializeQualificationForm();
+    initializeAccountForm();
+
     initializeWeather();
   }
 

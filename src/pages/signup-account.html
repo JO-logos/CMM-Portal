@@ -1,0 +1,49 @@
+        <form class="cmm-signup-form cmm-account-form" action="#" method="post" data-cmm-account-form novalidate>
+{{SIGNUP_STEPS}}
+
+          <div class="cmm-signup-form__header">
+            <h2 class="cmm-signup-form__title">Create Your Portal Account</h2>
+          </div>
+
+          <p class="cmm-signup-form__intro">Set up the sign-in information you’ll use to access your CMM Member Portal.</p>
+
+          <div class="cmm-signup-fields">
+            <label class="cmm-signup-field" for="cmm-account-email">
+              <span class="cmm-signup-field__label">Email Address</span>
+              <input class="cmm-login-field" id="cmm-account-email" name="email" type="email" autocomplete="email" placeholder="example@example.com" required>
+            </label>
+
+            <label class="cmm-signup-field" for="cmm-account-name">
+              <span class="cmm-signup-field__label">Full Name</span>
+              <input class="cmm-login-field" id="cmm-account-name" name="name" type="text" autocomplete="name" placeholder="e.g. John Doe" required>
+            </label>
+
+            <label class="cmm-signup-field" for="cmm-account-password">
+              <span class="cmm-signup-field__label">Password</span>
+              <span class="cmm-login-password" data-cmm-password-control>
+                <input class="cmm-login-field cmm-login-password__field" id="cmm-account-password" name="password" type="password" autocomplete="new-password" minlength="8" required>
+                <button class="cmm-login-password__toggle" type="button" data-cmm-password-toggle aria-pressed="false" aria-label="Show password">Show</button>
+              </span>
+            </label>
+
+            <label class="cmm-signup-field" for="cmm-account-password-confirmation">
+              <span class="cmm-signup-field__label">Confirm Password</span>
+              <span class="cmm-login-password" data-cmm-password-control>
+                <input class="cmm-login-field cmm-login-password__field" id="cmm-account-password-confirmation" name="password_confirmation" type="password" autocomplete="new-password" minlength="8" required>
+                <button class="cmm-login-password__toggle" type="button" data-cmm-password-toggle aria-pressed="false" aria-label="Show password confirmation">Show</button>
+              </span>
+            </label>
+          </div>
+
+          <p class="cmm-signup-form__privacy">Use at least eight characters. Your password will not be stored by this design prototype.</p>
+          <p class="cmm-signup-form__status" data-cmm-account-status role="status" hidden></p>
+
+          <div class="cmm-signup-actions">
+            <a class="cmm-signup-actions__secondary" href="signup-qualifications.html">Back</a>
+            <button class="cmm-signup-actions__primary" type="submit" data-cmm-account-submit>Create Account</button>
+          </div>
+
+          <nav class="cmm-login-help" aria-label="Account help">
+            <p class="cmm-login-help__signup">Already have a portal account? <a class="cmm-login-help__link" href="login.html">Sign in</a></p>
+          </nav>
+        </form>

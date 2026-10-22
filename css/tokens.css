@@ -62,6 +62,8 @@
   --cmm-motion-bounce: 520ms;
 
   --cmm-login-form-width: 17.75rem;
+  --cmm-signup-form-width: 34rem;
+  --cmm-signup-background-blur: 0.45rem;
   --cmm-login-content-width: 40rem;
   --cmm-login-footer-height: 4rem;
   --cmm-login-time-size: clamp(4.25rem, 5.25vw, 5.25rem);

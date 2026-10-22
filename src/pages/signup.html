@@ -1,0 +1,48 @@
+        <form class="cmm-signup-form" action="#" method="post" data-cmm-member-verification-form novalidate>
+{{SIGNUP_STEPS}}
+
+          <div class="cmm-signup-form__header">
+            <h2 class="cmm-signup-form__title">CMM Member Verification</h2>
+          </div>
+
+          <p class="cmm-signup-form__intro">Enter the information associated with your CMM membership. We’ll check for an existing portal account before you continue.</p>
+
+          <div class="cmm-signup-fields">
+            <label class="cmm-signup-field" for="cmm-verification-email">
+              <span class="cmm-signup-field__label">Email Address</span>
+              <input class="cmm-login-field" id="cmm-verification-email" name="email" type="email" autocomplete="email" placeholder="example@example.com" required>
+            </label>
+
+            <div class="cmm-signup-field-grid">
+              <label class="cmm-signup-field" for="cmm-verification-first-name">
+                <span class="cmm-signup-field__label">First Name</span>
+                <input class="cmm-login-field" id="cmm-verification-first-name" name="first_name" type="text" autocomplete="given-name" placeholder="First Name" required>
+              </label>
+              <label class="cmm-signup-field" for="cmm-verification-last-name">
+                <span class="cmm-signup-field__label">Last Name</span>
+                <input class="cmm-login-field" id="cmm-verification-last-name" name="last_name" type="text" autocomplete="family-name" placeholder="Last Name" required>
+              </label>
+            </div>
+
+            <div class="cmm-signup-field-grid">
+              <label class="cmm-signup-field" for="cmm-verification-birth-date">
+                <span class="cmm-signup-field__label">Date of Birth</span>
+                <input class="cmm-login-field" id="cmm-verification-birth-date" name="birth_date" type="date" autocomplete="bday" required>
+              </label>
+              <label class="cmm-signup-field" for="cmm-verification-zip-code">
+                <span class="cmm-signup-field__label">ZIP Code</span>
+                <input class="cmm-login-field" id="cmm-verification-zip-code" name="zip_code" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="ZIP Code" pattern="[0-9]{5}(-[0-9]{4})?" title="Enter a five-digit ZIP Code or ZIP+4." required>
+              </label>
+            </div>
+          </div>
+
+          <p class="cmm-signup-form__privacy">Your information is used only to locate your membership record.</p>
+          <p class="cmm-signup-form__status" data-cmm-member-verification-status role="status" hidden></p>
+          <button class="cmm-signup-form__submit" type="submit" data-cmm-member-verification-submit>Check Membership Status</button>
+
+          <p class="cmm-signup-form__prototype-link"><a class="cmm-login-help__link" href="signup-qualifications.html">Preview Step 2: Membership Qualifications</a></p>
+
+          <nav class="cmm-login-help" aria-label="Account help">
+            <p class="cmm-login-help__signup">Already have a portal account? <a class="cmm-login-help__link" href="login.html">Sign in</a></p>
+          </nav>
+        </form>
