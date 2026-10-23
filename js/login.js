@@ -99,139 +99,68 @@
     });
   }
 
-  function initializeLoginForm() {
-    const form = document.querySelector("[data-cmm-login-form]");
-    const submit = document.querySelector("[data-cmm-login-submit]");
-    const status = document.querySelector("[data-cmm-login-status]");
-    if (!form || !submit || !status) return;
-
-    function showStatus(message, state) {
-      status.textContent = message;
-      status.dataset.cmmLoginState = state;
-      status.hidden = false;
-    }
-
-    form.addEventListener("invalid", () => {
-      showStatus("Enter a valid email address and password.", "error");
-    }, true);
-
-    form.addEventListener("input", () => {
-      status.hidden = true;
-      delete status.dataset.cmmLoginState;
-    });
-
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      if (!form.checkValidity()) return;
-
-      submit.disabled = true;
-      submit.textContent = "Logging in…";
-      showStatus("Checking your account…", "loading");
-
-      window.setTimeout(() => {
-        submit.disabled = false;
-        submit.textContent = "Log In";
-        showStatus("Login is not connected in this design prototype.", "warning");
-      }, 700);
-    });
+  function navigateToPage(url) {
+    const target = new URL(url, window.location.href);
+    target.search = window.location.search;
+    window.location.assign(target.href);
   }
 
   function initializeMemberVerificationForm() {
     const form = document.querySelector("[data-cmm-member-verification-form]");
-    const submit = form?.querySelector("[data-cmm-member-verification-submit]");
     const status = form?.querySelector("[data-cmm-member-verification-status]");
-    if (!form || !submit || !status) return;
-
-    function showStatus(message, state) {
-      status.textContent = message;
-      status.dataset.cmmMemberVerificationState = state;
-      status.setAttribute("role", state === "error" ? "alert" : "status");
-      status.hidden = false;
-    }
-
-    form.addEventListener("invalid", () => {
-      showStatus("Please enter your Email address, or First Name, Last Name, Date of Birth, and ZIP Code.", "error");
-    }, true);
+    if (!form || !status) return;
 
     form.addEventListener("input", () => {
       status.hidden = true;
-      delete status.dataset.cmmMemberVerificationState;
     });
 
     form.addEventListener("submit", (event) => {
       event.preventDefault();
-      if (!form.checkValidity()) return;
+      const invalidFields = Array.from(form.querySelectorAll("[required]"))
+        .filter((field) => !field.validity.valid);
 
-      submit.disabled = true;
-      submit.textContent = "Checking membership…";
-      showStatus("Checking for an existing member record…", "loading");
+      if (invalidFields.length) {
+        const fieldNames = invalidFields.map((field) => {
+          const label = field.labels?.[0]?.querySelector(".cmm-signup-field__label");
+          return label?.textContent.trim() || field.name;
+        });
+        status.textContent = `Please enter valid information for: ${fieldNames.join(", ")}.`;
+        status.hidden = false;
+        invalidFields[0].focus();
+        return;
+      }
 
-      window.setTimeout(() => {
-        submit.disabled = false;
-        submit.textContent = "Check Membership Status";
-        showStatus("Membership verification is not connected in this design prototype.", "warning");
-      }, 700);
+      navigateToPage(form.action);
     });
   }
 
-  function initializeQualificationForm() {
-    const form = document.querySelector("[data-cmm-qualification-form]");
-    if (!form) return;
-
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      window.location.assign(form.action);
+  function initializeStepNavigation() {
+    document.querySelectorAll("[data-cmm-step-form]").forEach((form) => {
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        navigateToPage(form.action);
+      });
     });
   }
 
   function initializeAccountForm() {
     const form = document.querySelector("[data-cmm-account-form]");
-    const password = form?.querySelector("[name='password']");
-    const confirmation = form?.querySelector("[name='password_confirmation']");
-    const submit = form?.querySelector("[data-cmm-account-submit]");
-    const status = form?.querySelector("[data-cmm-account-status]");
-    if (!form || !password || !confirmation || !submit || !status) return;
-
-    function showStatus(message, state) {
-      status.textContent = message;
-      status.dataset.cmmAccountState = state;
-      status.setAttribute("role", state === "error" ? "alert" : "status");
-      status.hidden = false;
-    }
-
-    function updatePasswordMatch() {
-      const passwordsMatch = !confirmation.value || password.value === confirmation.value;
-      confirmation.setCustomValidity(passwordsMatch ? "" : "Passwords do not match.");
-    }
-
-    form.addEventListener("invalid", () => {
-      showStatus(
-        confirmation.validity.customError
-          ? "The passwords do not match. Please enter the same password twice."
-          : "Complete every field with valid account information.",
-        "error",
-      );
-    }, true);
-
-    form.addEventListener("input", () => {
-      updatePasswordMatch();
-      status.hidden = true;
-      delete status.dataset.cmmAccountState;
-    });
+    const email = form?.querySelector("[name='email']");
+    if (!form || !email) return;
 
     form.addEventListener("submit", (event) => {
       event.preventDefault();
-      updatePasswordMatch();
-      if (!form.checkValidity()) return;
-
-      submit.disabled = true;
-      submit.textContent = "Creating account…";
-      window.setTimeout(() => {
-        submit.disabled = false;
-        submit.textContent = "Create Account";
-        showStatus("Account creation is not connected in this design prototype.", "warning");
-      }, 700);
+      writeSessionValue("cmmSignupEmail", email.value.trim());
+      navigateToPage(form.action);
     });
+  }
+
+  function initializeSignupConfirmation() {
+    const email = document.querySelector("[data-cmm-confirmation-email]");
+    if (!email) return;
+
+    email.textContent = readSessionValue("cmmSignupEmail")
+      || "the email address you entered";
   }
 
   function weatherPresentation(code, isDay) {
@@ -376,10 +305,10 @@
     initializeBackground();
     initializeClock();
     initializePasswordControls();
-    initializeLoginForm();
     initializeMemberVerificationForm();
-    initializeQualificationForm();
+    initializeStepNavigation();
     initializeAccountForm();
+    initializeSignupConfirmation();
 
     initializeWeather();
   }

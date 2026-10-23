@@ -410,6 +410,17 @@ def build(check_only: bool) -> None:
         skip_link_text="Skip to account creation",
         active_signup_step=3,
     )
+    rendered_pages["signup-confirmation.html"] = render_auth_page(
+        login_shell,
+        auth_layout,
+        output_name="signup-confirmation.html",
+        source_name="signup-confirmation.html",
+        title="CMM Member Portal — Check Your Email",
+        description="Check your email to verify and finish creating your CMM Member Portal account",
+        body_class="cmm-login-page cmm-signup-page cmm-signup-confirmation-page",
+        page_heading="Check Your Email",
+        skip_link_text="Skip to email verification instructions",
+    )
     generated_assets = {
         BACKGROUND_CSS_PATH: render_background_css(backgrounds),
         BACKGROUND_JS_PATH: render_background_js(backgrounds),

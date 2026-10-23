@@ -1,4 +1,4 @@
-        <form class="cmm-signup-form" action="#" method="post" data-cmm-member-verification-form novalidate>
+        <form class="cmm-signup-form" action="signup-qualifications.html" method="get" data-cmm-member-verification-form novalidate>
 {{SIGNUP_STEPS}}
 
           <div class="cmm-signup-form__header">
@@ -37,10 +37,8 @@
           </div>
 
           <p class="cmm-signup-form__privacy">Your information is used only to locate your membership record.</p>
-          <p class="cmm-signup-form__status" data-cmm-member-verification-status role="status" hidden></p>
-          <button class="cmm-signup-form__submit" type="submit" data-cmm-member-verification-submit>Check Membership Status</button>
-
-          <p class="cmm-signup-form__prototype-link"><a class="cmm-login-help__link" href="signup-qualifications.html">Preview Step 2: Membership Qualifications</a></p>
+          <p class="cmm-signup-form__alert" data-cmm-member-verification-status role="alert" hidden></p>
+          <button class="cmm-signup-form__submit" type="submit">Check Membership Status</button>
 
           <nav class="cmm-login-help" aria-label="Account help">
             <p class="cmm-login-help__signup">Already have a portal account? <a class="cmm-login-help__link" href="login.html">Sign in</a></p>

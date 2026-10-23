@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/tokens.css">
     <link rel="stylesheet" href="../css/login-backgrounds.generated.css">
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/login.css?v=20261023-3">
     <script src="../js/login-backgrounds.generated.js" defer></script>
-    <script src="../js/login.js?v=20261021-3" defer></script>
+    <script src="../js/login.js?v=20261023-3" defer></script>
   </head>
   <body class="cmm-login-page cmm-signup-page cmm-account-setup-page">
     <a class="cmm-login-skip-link" href="#main-content">Skip to account creation</a>
@@ -30,7 +30,7 @@
 
 
 
-        <form class="cmm-signup-form cmm-account-form" action="#" method="post" data-cmm-account-form novalidate>
+        <form class="cmm-signup-form cmm-account-form" action="signup-confirmation.html" method="get" data-cmm-account-form novalidate>
           <ol class="cmm-signup-steps" aria-label="Account setup progress">
             <li class="cmm-signup-step">
               <span class="cmm-signup-step__number">Step 1</span>
@@ -80,12 +80,10 @@
             </label>
           </div>
 
-          <p class="cmm-signup-form__privacy">Use at least eight characters. Your password will not be stored by this design prototype.</p>
-          <p class="cmm-signup-form__status" data-cmm-account-status role="status" hidden></p>
-
+          <p class="cmm-signup-form__privacy">Use at least eight characters.</p>
           <div class="cmm-signup-actions">
             <a class="cmm-signup-actions__secondary" href="signup-qualifications.html">Back</a>
-            <button class="cmm-signup-actions__primary" type="submit" data-cmm-account-submit>Create Account</button>
+            <button class="cmm-signup-actions__primary" type="submit">Create Account</button>
           </div>
 
           <nav class="cmm-login-help" aria-label="Account help">
